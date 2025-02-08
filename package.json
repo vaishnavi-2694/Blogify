@@ -1,3 +1,5 @@
+
+
 {
   "name": "youtube-blog",
   "version": "1.0.0",
@@ -5,7 +7,8 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "deploy": "gh-pages -d public"
   },
   "author": "",
   "engines": {
@@ -25,6 +28,8 @@
     "tailwindcss": "^4.0.4"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "nodemon": "^3.1.9"
   }
 }
+
