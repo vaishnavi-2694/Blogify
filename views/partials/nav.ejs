@@ -1,0 +1,50 @@
+<nav class="bg-gray-900 text-white shadow-lg">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <a href="/" class="text-xl font-bold">Blogify</a>
+
+    <!-- Mobile Menu Button -->
+    <button id="menuToggle" class="lg:hidden focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+
+    <!-- Nav Links -->
+    <div class="hidden lg:flex space-x-6 items-center" id="navMenu">
+      <a href="/" class="hover:text-gray-300">Home</a>
+
+      <!-- Always Show "Create Account", "Sign In", "Sign Up" & "Add Blog" -->
+      <a href="/user/signup" class="hover:text-gray-300">Create Account</a>
+      <a href="/user/signin" class="hover:text-gray-300">Sign In</a>
+      <a href="/blog/add-new" class="hover:text-gray-300">Add Blog</a>
+
+      <% if (locals.user) { %>
+      <!-- Dropdown for Logged-in User -->
+      <div class="relative group">
+        <button class="hover:text-gray-300 focus:outline-none">
+          <%= locals.user.fullName %>
+        </button>
+        <div class="absolute hidden group-hover:block bg-gray-800 mt-2 w-40 rounded-md shadow-lg">
+          <a href="/user/logout" class="block px-4 py-2 text-white hover:bg-gray-700">Logout</a>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</nav>
+
+<!-- Error Message -->
+<% if (locals.error) { %>
+<div class="container mx-auto mt-4">
+  <div class="bg-red-500 text-white p-3 rounded-md"><%= locals.error %></div>
+</div>
+<% } %>
+
+<!-- JavaScript for Mobile Menu -->
+<script>
+  document.getElementById('menuToggle').addEventListener('click', () => {
+    document.getElementById('navMenu').classList.toggle('hidden');
+  });
+</script>
